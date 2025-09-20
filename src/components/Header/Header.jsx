@@ -6,6 +6,8 @@ import { authoriseActions } from "../../store/slices/authorise";
 import { flashMessageActions } from "../../store/slices/flashMessage";
 import { useState } from "react";
 
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -14,7 +16,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    const response = await fetch(`http://localhost:5000/api/auth/logout`, {
+    const response = await fetch(`${BASE_URL}/api/auth/logout`, {
       method: "GET",
       credentials: "include",
     });

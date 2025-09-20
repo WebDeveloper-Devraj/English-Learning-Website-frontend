@@ -3,6 +3,8 @@ import styles from "./Dashboard.module.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Dashboard = () => {
   // Mock data - replace with actual API calls in your MERN stack
   const user = useSelector((store) => store.authorise);
@@ -13,7 +15,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchQuizzes = async () => {
-      const response = await fetch("http://localhost:5000/api/quiz");
+      const response = await fetch(`${BASE_URL}/api/quiz`);
       const result = await response.json();
       setQuizzes(result.quizzes);
     };

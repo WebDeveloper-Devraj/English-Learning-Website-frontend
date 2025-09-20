@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { quizActions } from "../../store/slices/quiz";
 import { videoLessons } from "./videoData";
 
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function LevelWorkspace() {
   const { level } = useParams();
   const navigate = useNavigate();
@@ -53,7 +55,7 @@ export default function LevelWorkspace() {
 
   useEffect(() => {
     const fetchQuizzes = async () => {
-      const response = await fetch("http://localhost:5000/api/quiz");
+      const response = await fetch(`${BASE_URL}/api/quiz`);
       const result = await response.json();
 
       // console.log("quiz: ", quizId);

@@ -11,6 +11,8 @@ import { flashMessageActions } from "../../store/slices/flashMessage";
 import { authoriseActions } from "../../store/slices/authorise";
 import { quizActions } from "../../store/slices/quiz";
 
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 export default function Quiz() {
   const { level, quizId } = useParams();
   const user = useSelector((store) => store.authorise);
@@ -39,7 +41,7 @@ export default function Quiz() {
 
   useEffect(() => {
     const fetchQuiz = async () => {
-      const response = await fetch(`http://localhost:5000/api/quiz/${quizId}`);
+      const response = await fetch(`${BASE_URL}/api/quiz/${quizId}`);
       const result = await response.json();
       setQuiz(result.quiz);
     };
@@ -98,7 +100,7 @@ export default function Quiz() {
         completedAt: new Date().toISOString(),
       };
 
-      const response = await fetch("http://localhost:5000/api/quiz/submit", {
+      const response = await fetch(`${BASE_URL}/api/quiz/submit`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(quizResult),

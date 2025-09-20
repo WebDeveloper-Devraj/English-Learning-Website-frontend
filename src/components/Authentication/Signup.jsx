@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { authoriseActions } from "../../store/slices/authorise";
 import { flashMessageActions } from "../../store/slices/flashMessage";
 
+const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+
 const Signup = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -17,7 +19,7 @@ const Signup = () => {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
 
-    const response = await fetch(`http://localhost:5000/api/auth/signup`, {
+    const response = await fetch(`${BASE_URL}/api/auth/signup`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
