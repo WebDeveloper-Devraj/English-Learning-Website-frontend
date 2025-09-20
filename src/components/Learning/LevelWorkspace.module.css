@@ -1,0 +1,996 @@
+.levelWorkspace {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f9fafb 0%, #ffffff 50%, #dbeafe 100%);
+}
+
+/* Header Styles */
+.header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.headerContainer {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+@media (min-width: 640px) {
+  .headerContainer {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .headerContainer {
+    padding: 0 2rem;
+  }
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.backLink {
+  display: flex;
+  align-items: center;
+  color: #4b5563;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.backLink:hover {
+  color: #111827;
+}
+
+.backArrow {
+  margin-right: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.divider {
+  height: 1.5rem;
+  width: 1px;
+  background: #d1d5db;
+}
+
+.levelInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.levelIconHeader {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.levelIconHeader.green {
+  background: linear-gradient(to right, #10b981, #059669);
+}
+
+.levelIconHeader.blue {
+  background: linear-gradient(to right, #3b82f6, #2563eb);
+}
+
+.levelIconHeader.purple {
+  background: linear-gradient(to right, #8b5cf6, #7c3aed);
+}
+
+.levelIconHeader span {
+  font-size: 1.25rem;
+}
+
+.levelInfo h1 {
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.levelInfo p {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.headerStats {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statIcon {
+  font-size: 1.25rem;
+}
+
+.statValue {
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Main Content Styles */
+.main {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Progress Section */
+.progressSection {
+  margin-bottom: 2rem;
+}
+
+.progressCard {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.progressHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.progressHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+
+.updatedTime {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.progressStats {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .progressStats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.progressStat {
+  text-align: center;
+}
+
+.progressIcon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.5rem;
+}
+
+.progressIcon.blueIcon {
+  background: #dbeafe;
+}
+
+.progressIcon.greenIcon {
+  background: #d1fae5;
+}
+
+.progressIcon.purpleIcon {
+  background: #ede9fe;
+}
+
+.progressIcon.yellowIcon {
+  background: #fef3c7;
+}
+
+.progressIcon span {
+  font-size: 2rem;
+}
+
+.progressValue {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #111827;
+}
+
+.progressLabel {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Tabs Section */
+.tabsSection {
+  margin-bottom: 2rem;
+}
+
+.tabsContainer {
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabsNav {
+  display: flex;
+  gap: 2rem;
+}
+
+.tab {
+  padding: 0.5rem 0.25rem;
+  border-bottom: 2px solid transparent;
+  font-weight: 500;
+  font-size: 0.875rem;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activeTab {
+  border-bottom-color: #3b82f6;
+  color: #2563eb;
+}
+
+.inactiveTab {
+  color: #6b7280;
+}
+
+.inactiveTab:hover {
+  color: #374151;
+  border-bottom-color: #d1d5db;
+}
+
+/* Overview Content */
+.overviewContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .overviewContent {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+.modulesSection h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+.modulesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .modulesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.moduleCard {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.moduleCard:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.moduleHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.moduleIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.moduleCard:hover .moduleIcon {
+  transform: scale(1.1);
+}
+
+.moduleIcon.blue {
+  background: #3b82f6;
+  color: white;
+}
+
+.moduleIcon.green {
+  background: #10b981;
+  color: white;
+}
+
+.moduleIcon.purple {
+  background: #8b5cf6;
+  color: white;
+}
+
+.moduleIcon.red {
+  background: #ef4444;
+  color: white;
+}
+
+.moduleIcon.yellow {
+  background: #f59e0b;
+  color: white;
+}
+
+.moduleIcon.indigo {
+  background: #6366f1;
+  color: white;
+}
+
+.moduleIcon span {
+  font-size: 1.5rem;
+}
+
+.chevron {
+  color: #9ca3af;
+  font-size: 1.25rem;
+}
+
+.moduleCard:hover .chevron {
+  color: #4b5563;
+}
+
+.moduleCard h4 {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.moduleCard p {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.progressContainer {
+  margin-bottom: 0.5rem;
+}
+
+.progressInfo {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 0.25rem;
+}
+
+.progressBar {
+  width: 100%;
+  background: #e5e7eb;
+  border-radius: 9999px;
+  height: 0.5rem;
+}
+
+.progressFill {
+  height: 0.5rem;
+  border-radius: 9999px;
+  transition: all 0.5s ease;
+}
+
+.progressFill.blue {
+  background: #3b82f6;
+}
+
+.progressFill.green {
+  background: #10b981;
+}
+
+.progressFill.purple {
+  background: #8b5cf6;
+}
+
+.progressFill.red {
+  background: #ef4444;
+}
+
+.progressFill.yellow {
+  background: #f59e0b;
+}
+
+.progressFill.indigo {
+  background: #6366f1;
+}
+
+/* Sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.challengeCard {
+  background: linear-gradient(to right, #f97316, #ef4444);
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  color: white;
+}
+
+.challengeCard h4 {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.challengeCard p {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1rem;
+}
+
+.challengeProgress {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.challengeBar {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  height: 0.5rem;
+}
+
+.challengeFill {
+  background: white;
+  height: 0.5rem;
+  border-radius: 9999px;
+  width: 66.666667%;
+}
+
+.challengeProgress span {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.achievementsCard {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.achievementsCard h4 {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.achievementsList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.achievement {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.achievementIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.achievementIcon.unlocked {
+  background: #fef3c7;
+}
+
+.achievementIcon.locked {
+  background: #f3f4f6;
+}
+
+.achievementIcon span {
+  font-size: 1.125rem;
+}
+
+.achievementTitle {
+  font-weight: 500;
+}
+
+.unlockedText {
+  color: #111827;
+}
+
+.lockedText {
+  color: #9ca3af;
+}
+
+.communityCard {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.communityCard h4 {
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.communityCard p {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.joinButton {
+  width: 100%;
+  background: #2563eb;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+
+.joinButton:hover {
+  background: #1d4ed8;
+}
+
+/* Videos Grid */
+.videosGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .videosGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1280px) {
+  .videosGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.videoCard {
+  background: white;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.videoCard:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.videoThumbnail {
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.thumbnailIcon {
+  font-size: 3.75rem;
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playButton {
+  width: 4rem;
+  height: 4rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.playButton span {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-left: 0.25rem;
+}
+
+.completedBadge {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  background: #10b981;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.completedBadge span {
+  color: white;
+  font-size: 1.25rem;
+}
+
+.videoContent {
+  padding: 1.5rem;
+}
+
+.videoContent h4 {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.videoMeta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.points {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.points span:first-child {
+  color: #f59e0b;
+}
+
+.videoButton {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.completedButton {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.completedButton:hover {
+  background: #a7f3d0;
+}
+
+.startButton {
+  background: #2563eb;
+  color: white;
+}
+
+.startButton:hover {
+  background: #1d4ed8;
+}
+
+.videoPlayer {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.backButton {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  background: #0056b3;
+}
+
+/* Quizzes Grid */
+.quizzesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+  .quizzesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.quizCard {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.quizHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.quizHeader h4 {
+  font-weight: 600;
+  color: #111827;
+}
+
+.difficultyBadge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.difficultyBadge.easy {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.difficultyBadge.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.difficultyBadge.hard {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.quizInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.quizMeta {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.score {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.score span:first-child {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+.scoreValue {
+  font-weight: 600;
+  color: #10b981;
+}
+
+.quizButton {
+  width: 100%;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.reviewButton {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+.reviewButton:hover {
+  background: #e5e7eb;
+}
+
+.startQuizButton {
+  background: linear-gradient(to right, #2563eb, #8b5cf6);
+  color: white;
+}
+
+.startQuizButton:hover {
+  background: linear-gradient(to right, #1d4ed8, #7c3aed);
+}
+
+.quizTaking {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f9fafb;
+  border-radius: 10px;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.optionButton {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  background: #fff;
+}
+
+.optionButton:hover {
+  background: #f0f0f0;
+}
+
+.selectedOption {
+  background: #007bff;
+  color: white;
+  border-color: #007bff;
+}
+
+.quizNav {
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Activities Grid */
+.activitiesGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .activitiesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .activitiesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.activityCard {
+  background: white;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.activityCard:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.activityIcon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.activityIcon.blue {
+  background: #3b82f6;
+}
+
+.activityIcon.green {
+  background: #10b981;
+}
+
+.activityIcon.red {
+  background: #ef4444;
+}
+
+.activityIcon.purple {
+  background: #8b5cf6;
+}
+
+.activityIcon.yellow {
+  background: #f59e0b;
+}
+
+.activityIcon.indigo {
+  background: #6366f1;
+}
+
+.activityIcon span {
+  font-size: 1.5rem;
+}
+
+.activityCard h4 {
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.activityCard p {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.activityButton {
+  width: 100%;
+  background: #f3f4f6;
+  color: #374151;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.activityButton:hover {
+  background: #e5e7eb;
+}

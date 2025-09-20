@@ -1,0 +1,90 @@
+import { Link, useNavigate } from "react-router-dom";
+import styles from "./Header.module.css";
+import { useDispatch, useSelector } from "react-redux";
+
+import { authoriseActions } from "../../store/slices/authorise";
+import { flashMessageActions } from "../../store/slices/flashMessage";
+
+const Header = () => {
+  const user = useSelector((store) => store.authorise);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    const response = await fetch(`http://localhost:5000/api/auth/logout`, {
+      method: "GET",
+      credentials: "include",
+    });
+
+    const result = await response.json();
+
+    if (result.success) {
+      dispatch(authoriseActions.setUser(null));
+      navigate("/");
+      dispatch(
+        flashMessageActions.setFlashMessage({
+          message: result.message,
+          type: "success",
+        })
+      );
+    } else {
+      dispatch(
+        flashMessageActions.setFlashMessage({
+          message: result.message,
+          type: "error",
+        })
+      );
+      navigate("/");
+    }
+  };
+
+  return (
+    <header className={styles.header}>
+      <div className={styles.container}>
+        <div className={styles.logo}>
+          <Link to="/">
+            <h2>LearnEnglish</h2>
+          </Link>
+        </div>
+
+        <nav className={styles.nav}>
+          <Link to="/level" className={styles.navLink}>
+            Start Learning
+          </Link>
+          {user && (
+            <Link to="/dashboard" className={styles.navLink}>
+              My Dashboard
+            </Link>
+          )}
+          <a href="#about" className={styles.navLink}>
+            About
+          </a>
+          <a href="#contact" className={styles.navLink}>
+            Contact
+          </a>
+        </nav>
+
+        <div className={styles.authSection}>
+          {user ? (
+            <button onClick={handleLogout} className={styles.signupBtn}>
+              👋 Logout
+            </button>
+          ) : (
+            <>
+              <Link to="/login">
+                <button variant="outline" className={styles.loginBtn}>
+                  Login
+                </button>
+              </Link>
+              <Link to="/signup">
+                <button className={styles.signupBtn}>Sign Up Free</button>
+              </Link>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

@@ -1,0 +1,171 @@
+.hero {
+  background-color: #e7e7ff;
+  padding: 4rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+  color: #000;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 50%, rgba(240, 147, 251, 0.9) 100%); */
+  z-index: 1;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  min-height: 600px;
+}
+
+.textSection {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(0, 186, 127, 0.15);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  color: #000;
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: fit-content;
+}
+
+.badgeIcon {
+  width: 1rem;
+  height: 1rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  color: #000;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  color: #000;
+  margin: 0;
+}
+
+.cta {
+  display: flex;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.primaryBtn {
+  background: #030213;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.125rem;
+  font-weight: 600;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(3, 2, 19, 0.3);
+}
+
+.primaryBtn:hover {
+  background: #1a1a2e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(3, 2, 19, 0.4);
+}
+
+.features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #000;
+  font-size: 0.875rem;
+}
+
+.featureIcon {
+  width: 1rem;
+  height: 1rem;
+  color: #4ade80;
+}
+
+.imageSection {
+  position: relative;
+}
+
+.imageContainer {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.heroImage {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.floatingCard {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(10px);
+}
+
+.cardIcon {
+  font-size: 1.5rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTitle {
+  font-weight: 600;
+  color: #030213;
+  font-size: 0.875rem;
+}
+
+.cardSubtitle {
+  font-size: 0.75rem;
+  color: #6b7280;
+}
