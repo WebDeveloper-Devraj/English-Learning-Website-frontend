@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./Quiz.module.css";
 import { quizActions } from "../../store/slices/quiz";
 import { useDispatch } from "react-redux";
+import FlashMessage from "../FlashMessage/FlashMessage";
 
 export function ResultsCard({
   score,
@@ -23,6 +24,7 @@ export function ResultsCard({
 
   return (
     <div className={styles.resultsCard}>
+      <FlashMessage />
       <div className={styles.resultsHeader}>
         <div className={styles.scoreCircle}>
           <div className={styles.scorePercentage}>{percentage}%</div>

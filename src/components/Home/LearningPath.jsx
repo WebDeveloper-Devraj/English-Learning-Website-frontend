@@ -12,9 +12,9 @@ const LearningPath = () => {
     },
     {
       icon: CheckCircle,
-      title: "Comprehensive Content",
+      title: "Instant Practice",
       description:
-        "Everything you need to master English vocabulary, grammar, and reading.",
+        "Test your knowledge immediately with quizzes after every lesson to reinforce learning.",
     },
     {
       icon: Clock,

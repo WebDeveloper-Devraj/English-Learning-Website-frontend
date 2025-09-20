@@ -199,7 +199,7 @@ const Dashboard = () => {
           <div className={styles.quizHeader}>
             <h2 className={styles.quizTitle}>
               <span className={styles.icon}>📚</span>
-              Quiz Categories
+              Learning Categories
             </h2>
             <p className={styles.quizDescription}>
               Your progress across different difficulty levels

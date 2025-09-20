@@ -14,6 +14,8 @@ export function QuestionCard({ question }) {
   const user = useSelector((store) => store.authorise);
 
   const [reviewAns, setReviewAns] = useState();
+
+  const dispatch = useDispatch();
   // console.log(reviewAns);
 
   const { quizId } = useParams();
@@ -38,61 +40,104 @@ export function QuestionCard({ question }) {
     }
   }, [question]);
 
-  const dispatch = useDispatch();
+  // Handle typing for fill-in-the-blank
+  const handleInputChange = (e) => {
+    dispatch(
+      quizActions.setSelectedAnswers({
+        questionId: question._id,
+        index: e.target.value, // store actual string
+      })
+    );
+  };
 
   return (
     <div className={styles.questionCard}>
       <div className={styles.questionHeader}>
         <h2>{question.question}</h2>
         {question.text && (
-          <div className={styles.questionText}>"{question.text}"</div>
+          <div className={styles.questionText}>
+            {question.type === "mcq" && <p>"{question.text}"</p>}
+            {question.type === "fillblank" && (
+              <p>
+                {question.text.split("____").map((part, idx, arr) => (
+                  <span key={idx}>
+                    {part}
+                    {idx < arr.length - 1 && (
+                      <input
+                        type="text"
+                        value={selectedAnswer || reviewAns || ""}
+                        onChange={handleInputChange}
+                        disabled={showReview}
+                        className={styles.blankInput}
+                      />
+                    )}
+                  </span>
+                ))}
+              </p>
+            )}
+          </div>
         )}
       </div>
 
-      <div className={styles.optionsContainer}>
-        {question.options.map((option, index) => (
-          <button
-            key={index}
-            className={`${styles.optionButton} ${
-              selectedAnswer === index ? styles.selected : ""
-            } ${reviewAns === index ? styles.selected : ""}`}
-            onClick={() => {
-              // console.log("called");
-              dispatch(
-                quizActions.setSelectedAnswers({
-                  questionId: question._id,
-                  index,
-                })
-              );
-            }}
-            disabled={showReview}
-          >
-            <div className={styles.optionCircle}>
-              <span>{String.fromCharCode(65 + index)}</span>
-            </div>
-            <span className={styles.optionText}>{option}</span>
-          </button>
-        ))}
-      </div>
+      {/* ✅ For MCQ type */}
+      {question.type === "mcq" && (
+        <div className={styles.optionsContainer}>
+          {question.options.map((option, index) => (
+            <button
+              key={index}
+              className={`${styles.optionButton} ${
+                selectedAnswer === index ? styles.selected : ""
+              } ${reviewAns === index ? styles.selected : ""}`}
+              onClick={() =>
+                dispatch(
+                  quizActions.setSelectedAnswers({
+                    questionId: question._id,
+                    index,
+                  })
+                )
+              }
+              disabled={showReview}
+            >
+              <div className={styles.optionCircle}>
+                <span>{String.fromCharCode(65 + index)}</span>
+              </div>
+              <span className={styles.optionText}>{option}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
+      {/* ✅ For Fill-in-the-Blank type */}
+      {question.type === "fillblank" && (
+        <div className={styles.fillBlankContainer}>
+          <div className={styles.optionsHint}>
+            <strong>Options:</strong> {question.options.join(", ")}
+          </div>
+        </div>
+      )}
+
+      {/* ✅ Explanation after review */}
       {showReview && (
         <div className={styles.explanation}>
           <div className={styles.explanationHeader}>
             <span className={styles.explanationIcon}>
-              {reviewAns === question.correctAnswer ? "✅" : "❌"}
+              {reviewAns?.toString().toLowerCase() ===
+              question.correctAnswer.toString().toLowerCase()
+                ? "✅"
+                : "❌"}
             </span>
             <strong>
-              {reviewAns === question.correctAnswer ? "Correct!" : "Incorrect"}
+              {reviewAns?.toString().toLowerCase() ===
+              question.correctAnswer.toString().toLowerCase()
+                ? "Correct!"
+                : "Incorrect"}
             </strong>
           </div>
           <p>{question.explanation}</p>
-          {reviewAns !== question.correctAnswer && (
+          {reviewAns?.toString().toLowerCase() !==
+            question.correctAnswer.toString().toLowerCase() && (
             <p className={styles.correctAnswer}>
-              The correct answer was:{" "}
-              <strong>
-                {String.fromCharCode(65 + question.correctAnswer)}{" "}
-                {question.options[question.correctAnswer]}
-              </strong>
+              The correct answer was: <strong>{question.correctAnswer}</strong>
             </p>
           )}
         </div>

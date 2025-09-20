@@ -18,7 +18,7 @@ export default function LevelChoice() {
         "Simple conversations",
       ],
       duration: "5-10 days",
-      lessons: "10 lessons",
+      lessons: "10+ lessons",
       color: "green",
     },
     {
@@ -34,7 +34,7 @@ export default function LevelChoice() {
         "real world conversations",
       ],
       duration: "10-20 days",
-      lessons: "8 lessons",
+      lessons: "10+ lessons",
       color: "blue",
     },
     {
@@ -50,8 +50,8 @@ export default function LevelChoice() {
         "Advanced writing skills",
         "advance grammer",
       ],
-      duration: "1-2 months",
-      lessons: "8 lessons",
+      duration: "20-30 days",
+      lessons: "10+ lessons",
       color: "purple",
     },
   ];
@@ -83,7 +83,6 @@ export default function LevelChoice() {
             <h1 className={styles.title}>Choose Your Learning Level</h1>
             <p className={styles.subtitle}>
               Select the level that best matches your current English skills.
-              Don't worry - you can always change it later!
             </p>
           </div>
 

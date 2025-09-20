@@ -2,6 +2,7 @@
 import { Check } from "lucide-react";
 import styles from "./Hero.module.css";
 import heroImg from "../../assets/hero/hero.png";
+import { Link } from "react-router-dom";
 
 export default function Hero() {
   return (
@@ -19,24 +20,21 @@ export default function Hero() {
             </h1>
             <p className={styles.subtitle}>
               Start your English learning journey today with our simple,
-              structured lessons. Practice vocabulary, grammar, and reading
-              comprehension at your own pace.
+              structured levels. Practice vocabulary, and grammar at your own pace.
             </p>
 
             <div className={styles.cta}>
+              <Link to="/level">
               <button size="lg" className={styles.primaryBtn}>
                 Start Learning Now
               </button>
+              </Link>
             </div>
 
             <div className={styles.features}>
               <div className={styles.feature}>
                 <Check className={styles.featureIcon} />
                 <span>Always free</span>
-              </div>
-              <div className={styles.feature}>
-                <Check className={styles.featureIcon} />
-                <span>No registration required</span>
               </div>
               <div className={styles.feature}>
                 <Check className={styles.featureIcon} />

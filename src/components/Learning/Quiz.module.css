@@ -620,3 +620,19 @@
     transform: translateY(0);
   }
 }
+
+
+.blankInput {
+  border: 1px solid #ccc;
+  padding: 5px 8px;
+  font-size: 16px;
+  margin: 0 4px;
+  width: 150px;
+  outline: none;
+}
+
+.optionsHint {
+  margin-top: 8px;
+  font-size: 14px;
+  color: gray;
+}

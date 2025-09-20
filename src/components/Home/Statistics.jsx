@@ -7,16 +7,16 @@ const Statistics = () => {
       label: "Free Forever",
     },
     {
-      value: "1000+",
-      label: "Vocabulary Words",
-    },
-    {
-      value: "50+",
-      label: "Grammar Topics",
+      value: "20+",
+      label: "Quizzes",
     },
     {
       value: "∞",
       label: "Practice Time",
+    },
+    {
+      value: "100%",
+      label: "Mobile Friendly",
     },
   ];
 

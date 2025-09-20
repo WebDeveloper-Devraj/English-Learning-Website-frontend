@@ -1,11 +1,14 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useDispatch, useSelector } from "react-redux";
 
 import { authoriseActions } from "../../store/slices/authorise";
 import { flashMessageActions } from "../../store/slices/flashMessage";
+import { useState } from "react";
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const user = useSelector((store) => store.authorise);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -38,30 +41,56 @@ const Header = () => {
     }
   };
 
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
+  };
+
   return (
     <header className={styles.header}>
       <div className={styles.container}>
         <div className={styles.logo}>
-          <Link to="/">
+          <NavLink to="/">
             <h2>LearnEnglish</h2>
-          </Link>
+          </NavLink>
         </div>
 
         <nav className={styles.nav}>
-          <Link to="/level" className={styles.navLink}>
+          <NavLink
+            to="/level"
+            end
+            className={({ isActive }) => (isActive ? styles.activeLink : null)}
+          >
             Start Learning
-          </Link>
+          </NavLink>
           {user && (
-            <Link to="/dashboard" className={styles.navLink}>
+            <NavLink
+              to="/dashboard"
+              end
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : null
+              }
+            >
               My Dashboard
-            </Link>
+            </NavLink>
           )}
-          <a href="#about" className={styles.navLink}>
+          <NavLink
+            to="/about"
+            end
+            className={({ isActive }) => (isActive ? styles.activeLink : null)}
+          >
             About
-          </a>
-          <a href="#contact" className={styles.navLink}>
+          </NavLink>
+          <NavLink
+            to="/contact"
+            end
+            className={({ isActive }) => (isActive ? styles.activeLink : null)}
+          >
             Contact
-          </a>
+          </NavLink>
         </nav>
 
         <div className={styles.authSection}>
@@ -81,6 +110,93 @@ const Header = () => {
               </Link>
             </>
           )}
+        </div>
+
+        <button
+          className={styles.mobileMenuBtn}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+        >
+          <span
+            className={`${styles.hamburger} ${
+              isMobileMenuOpen ? styles.open : ""
+            }`}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        {/* Mobile Menu Overlay */}
+        <div
+          className={`${styles.mobileMenu} ${
+            isMobileMenuOpen ? styles.mobileMenuOpen : ""
+          }`}
+        >
+          <nav className={styles.mobileNav}>
+            <NavLink
+              to="/level"
+              end
+              className={({ isActive }) =>
+                isActive ? styles.activeMobileLink : styles.mobileNavLink
+              }
+              onClick={closeMobileMenu}
+            >
+              Start Learning
+            </NavLink>
+            {user && (
+              <NavLink
+                to="/dashboard"
+                end
+                className={({ isActive }) =>
+                  isActive ? styles.activeMobileLink : styles.mobileNavLink
+                }
+                onClick={closeMobileMenu}
+              >
+                My Dashboard
+              </NavLink>
+            )}
+            <NavLink
+              to="/about"
+              end
+              className={({ isActive }) =>
+                isActive ? styles.activeMobileLink : styles.mobileNavLink
+              }
+              onClick={closeMobileMenu}
+            >
+              About
+            </NavLink>
+            <NavLink
+              to="/contact"
+              end
+              className={({ isActive }) =>
+                isActive ? styles.activeMobileLink : styles.mobileNavLink
+              }
+              onClick={closeMobileMenu}
+            >
+              Contact
+            </NavLink>
+          </nav>
+
+          <div className={styles.mobileAuthSection}>
+            {user ? (
+              <button onClick={handleLogout} className={styles.mobileSignupBtn}>
+                👋 Logout
+              </button>
+            ) : (
+              <>
+                <Link to="/login" onClick={closeMobileMenu}>
+                  <button className={styles.mobileLoginBtn}>Login</button>
+                </Link>
+                <Link to="/signup" onClick={closeMobileMenu}>
+                  <button className={styles.mobileSignupBtn}>
+                    Sign Up Free
+                  </button>
+                </Link>
+              </>
+            )}
+          </div>
         </div>
       </div>
     </header>

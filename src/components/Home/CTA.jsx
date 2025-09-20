@@ -1,6 +1,7 @@
 import { ArrowRight } from "lucide-react";
 import styles from "./CTA.module.css";
 import CTAImg from "../../assets/hero/CTA.png";
+import { Link } from "react-router-dom";
 
 export default function CTA() {
   return (
@@ -11,16 +12,17 @@ export default function CTA() {
             <h2 className={styles.title}>Ready to Start Learning English?</h2>
             <p className={styles.subtitle}>
               Begin your English learning journey today. It's completely free
-              and you can start immediately without any registration or sign-up
-              required.
+              and you can start immediately.
             </p>
 
-            <div className={styles.buttonWrapper}>
-              <button size="lg" className={styles.button}>
-                Start Learning Now
-                <ArrowRight className={styles.buttonIcon} />
-              </button>
-            </div>
+            <Link to="/level">
+              <div className={styles.buttonWrapper}>
+                <button size="lg" className={styles.button}>
+                  Start Learning Now
+                  <ArrowRight className={styles.buttonIcon} />
+                </button>
+              </div>
+            </Link>
 
             <div className={styles.features}>
               <div className={styles.feature}>

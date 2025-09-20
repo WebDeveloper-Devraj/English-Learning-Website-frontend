@@ -7,6 +7,8 @@ import Quiz from "./components/Learning/Quiz";
 import Login from "./components/Authentication/Login";
 import Signup from "./components/Authentication/Signup";
 import Dashboard from "./components/Dashboard/Dashboard";
+import { ContactPage } from "./components/Contact Page/ContactPage";
+import { AboutPage } from "./components/AboutPage/AboutPage";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,8 @@ const router = createBrowserRouter([
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/login", element: <Login /> },
       { path: "/signup", element: <Signup /> },
+      { path: "/contact", element: <ContactPage /> },
+      { path: "/about", element: <AboutPage /> },
     ],
   },
   { path: "/quiz/:level/:quizId", element: <Quiz /> },

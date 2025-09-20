@@ -8,7 +8,6 @@ import { ResultsCard } from "./ResultsCard";
 import styles from "./Quiz.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { flashMessageActions } from "../../store/slices/flashMessage";
-import FlashMessage from "../FlashMessage/FlashMessage";
 import { authoriseActions } from "../../store/slices/authorise";
 import { quizActions } from "../../store/slices/quiz";
 
@@ -62,9 +61,24 @@ export default function Quiz() {
 
   const handleSubmitQuiz = async () => {
     let correctCount = 0;
+
     quiz.questions.forEach((question) => {
-      if (selectedAnswers[question._id] === question.correctAnswer) {
-        correctCount++;
+      const selectedOption = selectedAnswers[question._id];
+
+      if (question.type === "mcq") {
+        // MCQ: compare indices
+        if (selectedOption === question.correctAnswer) {
+          correctCount++;
+        }
+      } else if (question.type === "fillblank") {
+        // Fill-in-the-blank: compare strings (case-insensitive)
+        if (
+          selectedOption &&
+          selectedOption.toString().trim().toLowerCase() ===
+            question.correctAnswer.toString().trim().toLowerCase()
+        ) {
+          correctCount++;
+        }
       }
     });
 
@@ -135,8 +149,6 @@ export default function Quiz() {
 
     return (
       <div className={styles.quizContainer}>
-        <FlashMessage />
-
         <ResultsCard
           score={attemptedQuiz.score}
           totalQuestions={attemptedQuiz.totalQuestions}

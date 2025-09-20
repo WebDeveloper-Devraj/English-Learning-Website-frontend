@@ -15,6 +15,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
 }
 
 .logo h2 {
@@ -33,17 +34,26 @@
   gap: 3rem;
 }
 
-.navLink {
+.nav a {
   color: #6b7280;
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
+a.activeLink {
+  color: rgb(0, 0, 0);
+}
+
 .navLink:hover {
   color: #1f2937;
 }
 
+.authSection {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
 
 .loginBtn {
   background: transparent;
@@ -51,6 +61,9 @@
   border: 1px solid #e5e7eb;
   padding: 0.5rem 1rem;
   font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .loginBtn:hover {
@@ -67,10 +80,217 @@
   font-weight: 600;
   border-radius: 8px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .signupBtn:hover {
   background: #111827;
   transform: translateY(-1px);
   box-shadow: 0 4px 12px rgba(31, 41, 55, 0.3);
+}
+
+/* Mobile Menu Button */
+.mobileMenuBtn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 1001;
+}
+
+/* Hamburger Icon */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  width: 24px;
+  height: 18px;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #1f2937;
+  border-radius: 1px;
+  transition: all 0.3s ease;
+  transform-origin: center;
+}
+
+.hamburger span:nth-child(1) {
+  position: absolute;
+  top: 0;
+}
+
+.hamburger span:nth-child(2) {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hamburger span:nth-child(3) {
+  position: absolute;
+  bottom: 0;
+}
+
+/* Hamburger Animation */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Mobile Menu */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  padding: 6rem 2rem 2rem;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mobileMenuOpen {
+  transform: translateX(0);
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  background-color: #000000;
+  gap: 1.5rem;
+}
+
+.mobileNavLink {
+  color: #fff;
+  background-color: #000;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.mobileNavLink:hover {
+  background: #f9fafb;
+  color: #1f2937;
+}
+
+.activeMobileLink {
+  color: #1f2937;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 1rem;
+  border-radius: 8px;
+  background: #f3f4f6;
+  text-align: center;
+}
+
+.mobileAuthSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.mobileLoginBtn {
+  background: #1f2937;
+  color: white;
+  border: 1px solid #e5e7eb;
+  padding: 1rem;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.mobileLoginBtn:hover {
+  background: #f9fafb;
+  color: #1f2937;
+  border-color: #d1d5db;
+}
+
+.mobileSignupBtn {
+  background: #1f2937;
+  color: white;
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  width: 100%;
+}
+
+.mobileSignupBtn:hover {
+  background: #111827;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(31, 41, 55, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .nav {
+    display: none;
+  }
+  
+  .authSection {
+    display: none;
+  }
+  
+  .mobileMenuBtn {
+    display: block;
+  }
+  
+  .logo h2 {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .mobileMenu {
+    padding: 5rem 1.5rem 2rem;
+  }
+  
+  .logo h2 {
+    font-size: 1.1rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .nav {
+    gap: 2rem;
+  }
+  
+  .container {
+    padding: 0 1.5rem;
+  }
 }

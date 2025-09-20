@@ -10,7 +10,7 @@ const Footer = () => {
             <h3 className={styles.title}>LearnEnglish</h3>
             <p className={styles.description}>
               Free English learning platform designed to help you master
-              vocabulary, grammar, reading, and writing skills at your own pace.
+              vocabulary and grammar at your own pace.
             </p>
           </div>
 
@@ -18,24 +18,16 @@ const Footer = () => {
             <h4 className={styles.columnTitle}>Learning</h4>
             <ul className={styles.linkList}>
               <li>
-                <a href="#vocabulary" className={styles.link}>
-                  Vocabulary
-                </a>
+                <p className={styles.link}>Vocabulary</p>
               </li>
               <li>
-                <a href="#grammar" className={styles.link}>
-                  Grammar
-                </a>
+                <p className={styles.link}>Grammar</p>
               </li>
               <li>
-                <a href="#reading" className={styles.link}>
-                  Reading
-                </a>
+                <p className={styles.link}>Reading</p>
               </li>
               <li>
-                <a href="#writing" className={styles.link}>
-                  Writing
-                </a>
+                <p className={styles.link}>Writing</p>
               </li>
             </ul>
           </div>
@@ -45,11 +37,11 @@ const Footer = () => {
             <div className={styles.contactList}>
               <div className={styles.contactItem}>
                 <Mail className={styles.contactIcon} />
-                <span>support@learnenglish.com</span>
+                <span>omkarchalke406@gmail.com</span>
               </div>
               <div className={styles.contactItem}>
                 <Phone className={styles.contactIcon} />
-                <span>+1 (555) 123-4567</span>
+                <span>+91 8956676259</span>
               </div>
               <div className={styles.contactItem}>
                 <MapPin className={styles.contactIcon} />
@@ -64,14 +56,6 @@ const Footer = () => {
             <p className={styles.copyright}>
               © 2024 LearnEnglish. All rights reserved.
             </p>
-            <div className={styles.bottomLinks}>
-              <a href="#privacy" className={styles.bottomLink}>
-                Privacy Policy
-              </a>
-              <a href="#terms" className={styles.bottomLink}>
-                Terms of Service
-              </a>
-            </div>
           </div>
         </div>
       </div>
