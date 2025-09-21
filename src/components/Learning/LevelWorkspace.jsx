@@ -51,14 +51,10 @@ export default function LevelWorkspace() {
     (video) => video.level === level
   );
 
-  console.log(filteredVideoLessons);
-
   useEffect(() => {
     const fetchQuizzes = async () => {
       const response = await fetch(`${BASE_URL}/api/quiz`);
       const result = await response.json();
-
-      // console.log("quiz: ", quizId);
 
       const filteredQuizes = result.quizzes.filter(
         (quiz) => quiz.level === level
@@ -257,7 +253,7 @@ export default function LevelWorkspace() {
 
                     {(() => {
                       const attemptedQuiz = user.quizResults.find((q) => {
-                        return q._id.toString() === quiz._id.toString();
+                        return q.quizId.toString() === quiz._id.toString();
                       });
 
                       if (attemptedQuiz) {
@@ -282,7 +278,7 @@ export default function LevelWorkspace() {
 
                   {(() => {
                     const attemptedQuiz = user.quizResults.find((q) => {
-                      return q._id.toString() === quiz._id.toString();
+                      return q.quizId.toString() === quiz._id.toString();
                     });
 
                     return (
